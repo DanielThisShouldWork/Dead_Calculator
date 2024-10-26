@@ -1,0 +1,89 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Inserisci i dati</title>
+
+    <!-- CSS FILES -->                
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href="{% static 'application/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'application/css/tooplate-kool-form-pack.css' %}" rel="stylesheet">
+  </head>
+  
+  <body>
+
+    <main>
+      
+        <div class="container">
+          <div class="row justify-content-between">
+            
+            <div class="col-lg-12 col-12 d-flex align-items-center">
+                                
+                <i class="bi-box text-white"></i>
+                <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="{% url 'index' %}">Home</a>
+                    
+                </a>
+              <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button"></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-12 mx-auto text-center">
+              <h1 class="mt-2 mb-4 pb-2">The greatest mistake we make is believing we have time. How much do you think you have?</h1>
+
+              <!-- Formulary Section -->
+              <form action="{% url 'set-life-expectancy' %}" method="post" class="custom-form">
+                {% csrf_token %}
+                
+                <!-- Data di nascita -->
+                <div class="mb-3">
+                  <label for="birth_date" class="form-label">Date of birth:</label>
+                  <input type="date" name="birth_date" id="birth_date" class="form-control" required>
+                </div>
+
+                <!-- Selezione Paese -->
+                <div class="mb-3">
+                  <label for="country" class="form-label">Select country:</label>
+                  <select name="country" id="country" class="form-control">
+                    {% for life_expectancy in life_expectancies %}
+                      <option value="{{ life_expectancy.country }}">{{ life_expectancy.country }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <!-- Pulsante di Invio -->
+                <button type="submit" class="btn btn-primary mt-3">Calculate</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-wrap">
+            <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                <source src="{% static 'application/videos/video.mp4' %}" type="video/mp4">
+
+
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+
+      </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static 'application/js/jquery.min.js' %}"></script>
+    <script src="{% static 'application/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
