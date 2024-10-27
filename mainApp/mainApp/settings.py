@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
-DATABASE_URL = 'postgresql://postgres:qsEbkuuosxNigTWTuawotSBFnioLbncN@postgres.railway.internal:5432/railway'
+#DATABASE_URL = 'postgresql://postgres:qsEbkuuosxNigTWTuawotSBFnioLbncN@postgres.railway.internal:5432/railway'
 
 # Application definition
 
@@ -82,8 +82,9 @@ WSGI_APPLICATION = 'mainApp.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=DATABASE_URL)
+    'default': dj_database_url.config(conn_max_age=600)
 }
+
 # Controlla se l'URL è corretto
 print("Database URL:", DATABASE_URL)
 

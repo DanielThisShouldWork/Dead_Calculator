@@ -1,1 +1,1 @@
-web: gunicorn Project_countdown\mainApp\mainApp.wsgi --log-file -
+web: gunicorn mainApp.mainApp.wsgi:application --log-file -
