@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 from dj_database_url import parse as dburl
 
 
@@ -28,9 +29,9 @@ SECRET_KEY = 'django-insecure-j3fa@o20ztumez^!y9wq78)@nf&tr9a(21v7+u8(x*0!yfg0hp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['web-production-2bb30.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
-DATABASE_URL = 'postgresql://postgres:qsEbkuuosxNigTWTuawotSBFnioLbncN@postgres.railway.internal:5432/railway'
+DATABASE_URL = ''
 
 # Application definition
 
@@ -81,9 +82,10 @@ WSGI_APPLICATION = 'mainApp.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dburl(os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.config(default=DATABASE_URL)
 }
-
+# Controlla se l'URL è corretto
+print("Database URL:", DATABASE_URL)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
