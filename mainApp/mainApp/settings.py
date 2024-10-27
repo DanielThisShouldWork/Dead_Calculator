@@ -33,6 +33,12 @@ ALLOWED_HOSTS = ['*']
 
 #DATABASE_URL = 'postgresql://postgres:qsEbkuuosxNigTWTuawotSBFnioLbncN@postgres.railway.internal:5432/railway'
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = ['https://deadcalculator-production.up.railway.app', 'https://mainApp.railway.app']
+
+
 # Application definition
 
 INSTALLED_APPS = [
