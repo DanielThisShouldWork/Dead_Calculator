@@ -83,16 +83,12 @@ WSGI_APPLICATION = 'mainApp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://postgres:qsEbkuuosxNigTWTuawotSBFnioLbncN@postgres.railway.internal:5432/railway')
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'qsEbkuuosxNigTWTuawotSBFnioLbncN',
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=DATABASE_URL)
 }
+
 
 
 
