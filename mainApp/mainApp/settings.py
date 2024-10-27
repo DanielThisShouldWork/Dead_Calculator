@@ -31,7 +31,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
-DATABASE_URL = ''
+DATABASE_URL = 'postgresql://postgres:qsEbkuuosxNigTWTuawotSBFnioLbncN@postgres.railway.internal:5432/railway'
 
 # Application definition
 
