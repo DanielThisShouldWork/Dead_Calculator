@@ -1,1 +1,1 @@
-web: gunicorn mainApp.wsgi
+web: echo "Hello, Railway!"
